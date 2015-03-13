@@ -1,5 +1,29 @@
 <ion-view>
-  <ion-content>
-    <h1>Recommended</h1>
+    <ion-header-bar class="bar-default">
+
+        <h1 class="title"><button class="button button-icon icon ion-ios-cart">  {{totalPrice() | currency }}</button></h1>
+    </ion-header-bar>
+  <ion-content scroll="false"  has-bouncing="false">
+      <div ng-if="cardsLoaded">
+          <td-cards>
+              <td-card
+                      id="td-card"
+                      class="td-card td-card--index-{{$index}}"
+                      ng-repeat="card in cards"
+                      on-transition-left="cardDislike(card)"
+                      on-transition-right="cardLike(card)"
+                      on-transition-out="fadeCard()"
+                      on-destroy="removeCard($index)"
+                      >
+                  <div class="card">
+                      <figure class="item item-image">
+                          <img ng-src="{{card.image}}">
+                          <div class="td-card__overlay td-card__overlay--dislike no-text">Dislike</div>
+                          <div class="td-card__overlay td-card__overlay--like yes-text">Add to cart</div>
+                      </figure>
+                  </div>
+              </td-card>
+          </td-cards>
+      </div>
   </ion-content>
 </ion-view>
