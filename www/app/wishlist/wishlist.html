@@ -1,5 +1,43 @@
 <ion-view>
-  <ion-content>
-    <h1>Wishlist</h1>
-  </ion-content>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Wishlist</h1>
+        <button class="button button-icon" ng-click="newItemForm()">
+            <i class="icon ion-plus"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content>
+        <!-- our list and list items -->
+        <ion-list>
+            <ion-item ng-repeat="item in wishItem">
+                {{item.title}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
+<script id="new-task.html" type="text/ng-template">
+    <div class="modal">
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">Add wishlist item</h1>
+            <button class="button button-clear button-positive" ng-click="closeNewItem()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+            <form ng-submit="addItem(task)">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                    </label>
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">Create Task</button>
+                </div>
+            </form>
+
+        </ion-content>
+
+    </div>
+
+</script>
