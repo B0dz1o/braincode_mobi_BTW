@@ -1,6 +1,11 @@
 <ion-view>
-    <ion-header-bar class="bar-default">
-        <h1 class="title"><button class="button button-icon icon ion-ios-cart">  {{totalPrice() | currency }}</button></h1>
+    <ion-header-bar class="bar-dark">
+      <div class="title">Oferty
+        <a href="#" ng-click="openInSystemBrowser(sellerPage)">
+          <span>{{sellerInfo.login}}</span>
+        </a>
+      </div>
+       
     </ion-header-bar>
     
   <ion-content scroll="false"  has-bouncing="false">
@@ -22,15 +27,23 @@
                           <div class="td-card__overlay td-card__overlay--like yes-text">Add to cart</div>
                       </figure>
                   </div>
+
+                  <button class="name">
+                    <a href="#" ng-click="openInSystemBrowser(offerWWWPage)">
+                      {{card.offer.name}}
+                    </a>
+                    <span class="prize outline">&nbsp;{{card.offer.prices.buyNow | currency}}</span>
+                  </button>
+
+
               </td-card>
           </td-cards>
       </div>
   </ion-content>
-  <ion-footer-bar align-title="center" class="bar-assertive">
-    <h1 class="title">
-      <a href="#" ng-click="openInSystemBrowser(sellerPage)">
-        <span>{{sellerInfo.login}}</span>
-      </a>
-    </h1>
+  <ion-footer-bar  class="bar-assertive">
+    <div class="button-bar">
+      <button class="button button-dark button-icon icon ion-ios-cart">  {{totalPrice() | currency }}</button>
+      <button class="button button-assertive button-icon icon ion-ios-list">  allegro</button>
+    </div>
   </ion-footer-bar>
 </ion-view>

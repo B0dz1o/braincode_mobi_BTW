@@ -168,7 +168,7 @@ angular.module('BTW.allegro.data', [])
 			},
 			{
 				"id": "5138931925",
-				"name": "Spodnie dresowe marki Dresy Teresy (używane) XL",
+				"name": "Spodnie jeansowe marki Dresy Teresy (używane) XL",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -182,7 +182,7 @@ angular.module('BTW.allegro.data', [])
 				"buyNow": true,
 				"auction": true,
 				"allegroStandard": false,
-				"mainImage": "http://img06.allegroimg.pl/photos/oryginal/51/38/93/19/5138931925",
+				"mainImage": "http://blog.denimtherapy.com/wp-content/uploads/2011/05/sexy-jeans-habitual-jeans-spring-summer-2011-lookbook.jpg",
 				"bids": {
 					"count": 0
 				}

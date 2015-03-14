@@ -8,6 +8,7 @@
     position: absolute;
     width: 100%;
     display: block;
+    text-align: center;
 }
 
 .td-card img {
@@ -34,4 +35,22 @@
 .td-card__overlay--dislike {
     color: tomato;
     right: 0;
+}
+.td-card .name {
+    text-align: center;
+}
+
+.td-card .name a {
+    color: #000;
+}
+
+
+
+.outline {
+    text-shadow: #000 0 0 1px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.td-card .prize {
+    text-align: center;
 }
