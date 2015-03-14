@@ -10,6 +10,10 @@ angular.module('BTW.login', [])
 			});
 		};
 
+		$scope.triggerRecommendations = function (sellerid) {
+			$location.path('/tabs/recommended/' + sellerid);
+		};
+
 		$scope.login = function () {
 			$location.path('/tabs/wishlist');
 		};

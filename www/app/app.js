@@ -53,7 +53,7 @@ angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.rec
 				}
 			})
 			.state('tabs.recommended', {
-				url: "/recommended",
+				url: "/recommended/:sellerId",
 				views: {
 					'tabs-recommended': {
 						templateUrl: "app/recommended/recommended.html",
