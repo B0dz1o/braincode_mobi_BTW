@@ -44,10 +44,11 @@ angular.module('BTW.recommended', ['ionic', 'ionic.contrib.ui.tinderCards', 'BTW
         };
     })
 
-	.controller('RecommendedCtrl', function ($scope, $http, $stateParams, RecommenderService ) {
+	.controller('RecommendedCtrl', function ($scope, $http, $stateParams, RecommenderService) {
         $scope.cart = [];
         $scope.cards = [];
-        $scope.cardsLoaded = false;
+        $scope.cardsLoaded = true;
+        $scope.cardsTotal = 0;
 
         // kto spamuje ofertami
         $scope.sellerInfo = RecommenderService.getSellerInfo($stateParams.sellerId);
@@ -66,40 +67,33 @@ angular.module('BTW.recommended', ['ionic', 'ionic.contrib.ui.tinderCards', 'BTW
         $scope.totalPrice = function() {
             var total = 0;
             angular.forEach($scope.cart, function(item) {
-                total += item.price;
+                total += item.offer.prices.buyNow;
             })
             return total;
         }
-        
-        $scope.addCard = function(image) {
-            var newCard;
-            newCard = {
-                'image': image,
-                'price' : 10
-            };
+
+        $scope.addCard = function(newCard) {
             $scope.cards.unshift(angular.extend({}, newCard));
         };
 
-        $scope.addCards = function(count) {
-            $http.get('http://api.randomuser.me/?results=' + count).then(function(users) {
-                $scope.cardsLoaded = true;
-                angular.forEach(users.data.results, function(card) {
-                    $scope.addCard(card.user.picture.large);
-                });
-            });
-        };
 
-        $scope.addCards(3);
+        $scope.recommendedSet.forEach(function (product) {
+            // $scope.addCard(card.user.picture.large);
+            $scope.addCard(product);
+            console.log(product.offer.mainImage);
+        });
+        $scope.cardsTotal = $scope.recommendedSet.length;
+        
 
         $scope.cardLike = function(card) {
             $scope.cart.push(card);
             console.log("cardLike" + card.price);
-            $scope.addCards(1);
+            // $scope.addCards(1);
         };
 
         $scope.cardDislike = function(card) {
             console.log("cardDislike");
-            $scope.addCards(1);
+            // $scope.addCards(1);
         };
 
         $scope.removeCard = function($index) {
@@ -108,6 +102,11 @@ angular.module('BTW.recommended', ['ionic', 'ionic.contrib.ui.tinderCards', 'BTW
 
         $scope.fadeCard = function($index) {
             this.swipeCard.el.style.opacity = 0
+        };
+
+        $scope.openInSystemBrowser = function (page) {
+            window.open(page, '_system', 'location=yes'); 
+            return false;
         }
 
     });

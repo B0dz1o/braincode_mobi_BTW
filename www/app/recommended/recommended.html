@@ -1,8 +1,8 @@
 <ion-view>
     <ion-header-bar class="bar-default">
-
         <h1 class="title"><button class="button button-icon icon ion-ios-cart">  {{totalPrice() | currency }}</button></h1>
     </ion-header-bar>
+    
   <ion-content scroll="false"  has-bouncing="false">
       <div ng-if="cardsLoaded">
           <td-cards>
@@ -17,7 +17,7 @@
                       >
                   <div class="card">
                       <figure class="item item-image">
-                          <img ng-src="{{card.image}}">
+                          <img ng-src="{{card.offer.mainImage}}">
                           <div class="td-card__overlay td-card__overlay--dislike no-text">Dislike</div>
                           <div class="td-card__overlay td-card__overlay--like yes-text">Add to cart</div>
                       </figure>
@@ -26,4 +26,11 @@
           </td-cards>
       </div>
   </ion-content>
+  <ion-footer-bar align-title="center" class="bar-assertive">
+    <h1 class="title">
+      <a href="#" ng-click="openInSystemBrowser(sellerPage)">
+        <span>{{sellerInfo.login}}</span>
+      </a>
+    </h1>
+  </ion-footer-bar>
 </ion-view>

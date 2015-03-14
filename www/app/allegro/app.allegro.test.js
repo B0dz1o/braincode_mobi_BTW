@@ -4,7 +4,7 @@ angular.module('BTW.allegro.data', [])
 	return {
 		USERS:  {"111" : {
 			"id": "111",
-			"login": "BODZIO_PL",
+			"login": "Azymut_Warszawa2",
 			"country": 1,
 			"rating": 804,
 			"ratingIcon": 3,
