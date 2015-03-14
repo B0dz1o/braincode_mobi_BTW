@@ -49,6 +49,7 @@ angular.module('BTW.allegro', ['BTW.allegro.data'])
 		getOfferPage : function (offerId) {
 			return AllegroMockData.OFFER_PAGES[offerId]
 		},
+		
 		getUserPage : function (uid) {
 			return AllegroMockData.USER_PAGES[uid];
 		}

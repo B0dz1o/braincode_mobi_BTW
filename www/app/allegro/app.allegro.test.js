@@ -122,7 +122,7 @@ angular.module('BTW.allegro.data', [])
 
 	USER_OFFERS: {
 		"111" : {
-			"count": 4,
+			"count": 5,
 			"offers": [
 			{
 				"id": "5135869160",

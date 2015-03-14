@@ -1,12 +1,13 @@
-angular.module('BTW.recommender', [])	
+angular.module('BTW.recommender', [])
+
+	// The Most Simple Recommender ever ;)	
 	.factory('BTWRecommender', function(){
 
-	var RECOMMENDED_OFFERS = {
-		"111" : ['5135869160', '5161390481', '5138931925']
-	}
+	var RECOMMENDED_OFFERS = 
+		['5135869160', '5161390481', '5138931925'];
 
 	return {
-		recommendProducts : function (userWishList, sellerProducts) {
+		recommendProducts : function (userWishList, sellerOffers) {
 			return RECOMMENDED_OFFERS;
 		}
 	};
