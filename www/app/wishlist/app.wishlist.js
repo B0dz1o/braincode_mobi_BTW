@@ -1,5 +1,6 @@
 angular.module('BTW.wishlist', [])
-	.controller('WishlistCtrl', function ($scope, $ionicModal, $timeout) {
+    .controller('WishlistCtrl', function($scope, $ionicModal, $timeout,
+        $location) {
 
         $scope.onSwipeLeft = function($index) {
             $scope.wishItem[$index].left = true;
@@ -36,7 +37,7 @@ angular.module('BTW.wishlist', [])
                 title: task.title,
                 suggested: task.suggested
             });
-            if ($scope.taskModal) {
+            if($scope.taskModal) {
                 $scope.taskModal.hide();
             }
             task.title = "";
@@ -54,109 +55,139 @@ angular.module('BTW.wishlist', [])
             $scope.taskModal.hide();
         };
 
-        $scope.addItem({title: "Spodnie Tactical M60 L", suggested: true});
+        $scope.addItem({
+            title: "Spodnie Tactical M60 L",
+            suggested: true
+        });
 
 
-		if (JSON.parse(localStorage.getItem('wishList')) == null) {
-			$scope.wishItem = [];
-		} else {
-			$scope.wishItem = JSON.parse(localStorage.getItem('wishList'));
-		}
+        if(JSON.parse(localStorage.getItem('wishList')) == null) {
+            $scope.wishItem = [];
+        } else {
+            $scope.wishItem = JSON.parse(localStorage.getItem('wishList'));
+        }
 
-		// Create and load the Modal
-		$ionicModal.fromTemplateUrl('new-task.html', function (modal) {
-			$scope.taskModal = modal;
-		}, {
-			scope: $scope,
-			animation: 'slide-in-up'
-		});
+        // Create and load the Modal
+        $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
+            $scope.taskModal = modal;
+        }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
 
-		// Called when the form is submitted
-		$scope.addItem = function (task) {
-			$scope.wishItem.push({
-				title: task.title
-			});
-			$scope.taskModal.hide();
-			task.title = "";
+        // Called when the form is submitted
+        $scope.addItem = function(task) {
+            $scope.wishItem.push({
+                title: task.title
+            });
+            $scope.taskModal.hide();
+            task.title = "";
 
-			localStorage.setItem('wishList', JSON.stringify($scope.wishItem));
-		};
+            localStorage.setItem('wishList', JSON.stringify($scope.wishItem));
+        };
 
-		// Open our new task modal
-		$scope.newItemForm = function () {
-			$scope.taskModal.show();
-		};
+        // Open our new task modal
+        $scope.newItemForm = function() {
+            $scope.taskModal.show();
+        };
 
-		// Close the new task modal
-		$scope.closeNewItem = function () {
-			$scope.taskModal.hide();
-		};
+        // Close the new task modal
+        $scope.closeNewItem = function() {
+            $scope.taskModal.hide();
+        };
 
-		var createDelegate = function () {
+        var createDelegate = function() {
 
-			var delegate = new cordova.plugins.locationManager.Delegate();
+            var delegate = new cordova.plugins.locationManager.Delegate();
 
-			delegate.didDetermineStateForRegion = function (pluginResult) {
-				console.log('didDetermineStateForRegion:\n' + pluginResult);
-			};
+            delegate.didDetermineStateForRegion = function(pluginResult) {
+                console.log('didDetermineStateForRegion:\n' +
+                    pluginResult);
+            };
 
-			delegate.didStartMonitoringForRegion = function (pluginResult) {
-				console.log('didStartMonitoringForRegion:\n' + pluginResult);
-			};
+            delegate.didStartMonitoringForRegion = function(
+                pluginResult) {
+                console.log('didStartMonitoringForRegion:\n' +
+                    pluginResult);
+            };
 
-			delegate.didRangeBeaconsInRegion = function (pluginResult) {
-				console.log('didRangeBeaconsInRegion:\n' + pluginResult);
-				$scope.beaconList = pluginResult;
-				console.log(pluginResult);
-			};
+            delegate.didRangeBeaconsInRegion = function(pluginResult) {
+                console.log('didRangeBeaconsInRegion:\n' +
+                    pluginResult);
+                console.log(pluginResult);
 
-			console.log('Delegate created!');
+                var beacons = pluginResult.beacons;
+                if(beacons) {
+                    beacons.forEach(function(beacon, index,
+                        beaconList) {
 
-			return delegate;
-		}
+                        if(beacon.minor == '100' && beacon.major ==
+                            '100') {
 
-		var setBluetooth = function () {
+                            // cordova.plugins.notification.local
+                            //     .schedule({
+                            //         id: 10,
+                            //         text: "Znaleziono pasujący sklep",
+                            //         at: 'now',
+                            //         icon: 'file://img/notification.png',
+                            //         smallIcon: 'file://img/notification.png'
+                            //     });
+                            $location.path('/tabs/recommended/111');
+                        }
+                    });
+                }
+            }
 
-			cordova.plugins.locationManager.isBluetoothEnabled()
-				.then(function (isEnabled) {
-					console.log("isEnabled: " + isEnabled);
-					if (!isEnabled) {
-						cordova.plugins.locationManager.enableBluetooth();
-					}
-				})
-				.fail(console.error)
-				.done();
-		};
+            console.log('Delegate created!');
 
-		$scope.beaconScan = function () {
+            return delegate;
+        }
 
-			setBluetooth();
-			var delegate = createDelegate();
+        var setBluetooth = function() {
 
-			var uuid = '12345678-1234-1234-1234-123456789012';
-			var identifier = 'beaconyAllegro';
+            cordova.plugins.locationManager.isBluetoothEnabled()
+                .then(function(isEnabled) {
+                    console.log("isEnabled: " + isEnabled);
+                    if(!isEnabled) {
+                        cordova.plugins.locationManager.enableBluetooth();
+                    }
+                })
+                .fail(console.error)
+                .done();
+        };
 
-			var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(
-				identifier, uuid);
+        $scope.beaconScan = function() {
+            console.log("Sukces wywolania")
+            setBluetooth();
+            var delegate = createDelegate();
 
-			cordova.plugins.locationManager.setDelegate(delegate);
+            var uuid = '12345678-1234-1234-1234-123456789012';
+            var identifier = 'beaconyAllegro';
 
-			cordova.plugins.locationManager.requestAlwaysAuthorization();
+            var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(
+                identifier, uuid);
 
-			var stopRanging = function () {
-				cordova.plugins.locationManager.stopRangingBeaconsInRegion(
-						beaconRegion)
-					.fail(console.error)
-					.done();
-			};
+            cordova.plugins.locationManager.setDelegate(delegate);
+
+            cordova.plugins.locationManager.requestAlwaysAuthorization();
+
+            var stopRanging = function() {
+                cordova.plugins.locationManager.stopRangingBeaconsInRegion(
+                        beaconRegion)
+                    .fail(console.error)
+                    .done();
+            };
 
 
-			$timeout(stopRanging, 10000);
+                       $timeout(stopRanging, 10000);
 
-			cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
-				.fail(console.error)
-				.done();
+            cordova.plugins.locationManager.startRangingBeaconsInRegion(
+                    beaconRegion)
+                .fail(console.error)
+                .done();
 
-		};
+        };
 
-	});
+        $scope.beaconScan();
+
+    });
