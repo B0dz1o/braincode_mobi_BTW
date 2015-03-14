@@ -1,126 +1,126 @@
 angular.module('BTW.allegro.data', [])
 
-.factory('AllegroData', function () {
-
-	var USERS = [{
-		"id": "111",
-		"login": "BODZIO_PL",
-		"country": 1,
-		"rating": 804,
-		"ratingIcon": 3,
-		"company": true,
-		"allegroStandard": true,
-		"sellerRatings": {
-			"count": 800,
-			"averages": [
-			{
-				"title": "Zgodność przedmiotu z opisem",
-				"rating": 5
+.factory('AllegroMockData', function () {
+	return {
+		USERS:  {"111" : {
+			"id": "111",
+			"login": "BODZIO_PL",
+			"country": 1,
+			"rating": 804,
+			"ratingIcon": 3,
+			"company": true,
+			"allegroStandard": true,
+			"sellerRatings": {
+				"count": 800,
+				"averages": [
+				{
+					"title": "Zgodność przedmiotu z opisem",
+					"rating": 5
+				},
+				{
+					"title": "Kontakt ze Sprzedającym",
+					"rating": 5
+				},
+				{
+					"title": "Czas realizacji zamówienia",
+					"rating": 4.9
+				},
+				{
+					"title": "Koszt wysyłki",
+					"rating": 4.8
+				}
+				]
 			},
-			{
-				"title": "Kontakt ze Sprzedającym",
-				"rating": 5
-			},
-			{
-				"title": "Czas realizacji zamówienia",
-				"rating": 4.9
-			},
-			{
-				"title": "Koszt wysyłki",
-				"rating": 4.8
-			}
-			]
-		},
-		"feedbacks": {
-			"all": 1,
-			"positive": {
-				"lastWeek": 1,
-				"lastMonth": 1,
+			"feedbacks": {
 				"all": 1,
-				"asSeller": 1,
-				"asBuyer": 0,
-				"percent": 100
+				"positive": {
+					"lastWeek": 1,
+					"lastMonth": 1,
+					"all": 1,
+					"asSeller": 1,
+					"asBuyer": 0,
+					"percent": 100
+				},
+				"neutral": {
+					"lastWeek": 0,
+					"lastMonth": 0,
+					"all": 0,
+					"asSeller": 0,
+					"asBuyer": 0,
+					"percent": 0
+				},
+				"negative": {
+					"lastWeek": 0,
+					"lastMonth": 0,
+					"all": 0,
+					"asSeller": 0,
+					"asBuyer": 0,
+					"percent": 0
+				}
 			},
-			"neutral": {
-				"lastWeek": 0,
-				"lastMonth": 0,
-				"all": 0,
-				"asSeller": 0,
-				"asBuyer": 0,
-				"percent": 0
-			},
-			"negative": {
-				"lastWeek": 0,
-				"lastMonth": 0,
-				"all": 0,
-				"asSeller": 0,
-				"asBuyer": 0,
-				"percent": 0
-			}
+			"saleRegulation": ""
 		},
-		"saleRegulation": ""
+		"112" : {
+			"id": "112",
+			"login": "NightHawk999",
+			"country": 1,
+			"rating": 804,
+			"ratingIcon": 3,
+			"company": true,
+			"allegroStandard": true,
+			"sellerRatings": {
+				"count": 800,
+				"averages": [
+				{
+					"title": "Zgodność przedmiotu z opisem",
+					"rating": 5
+				},
+				{
+					"title": "Kontakt ze Sprzedającym",
+					"rating": 5
+				},
+				{
+					"title": "Czas realizacji zamówienia",
+					"rating": 4.9
+				},
+				{
+					"title": "Koszt wysyłki",
+					"rating": 4.8
+				}
+				]
+			},
+			"feedbacks": {
+				"all": 1,
+				"positive": {
+					"lastWeek": 1,
+					"lastMonth": 1,
+					"all": 1,
+					"asSeller": 1,
+					"asBuyer": 0,
+					"percent": 100
+				},
+				"neutral": {
+					"lastWeek": 0,
+					"lastMonth": 0,
+					"all": 0,
+					"asSeller": 0,
+					"asBuyer": 0,
+					"percent": 0
+				},
+				"negative": {
+					"lastWeek": 0,
+					"lastMonth": 0,
+					"all": 0,
+					"asSeller": 0,
+					"asBuyer": 0,
+					"percent": 0
+				}
+			},
+			"saleRegulation": ""
+		}
 	},
-	{
-		"id": "112",
-		"login": "NightHawk999",
-		"country": 1,
-		"rating": 804,
-		"ratingIcon": 3,
-		"company": true,
-		"allegroStandard": true,
-		"sellerRatings": {
-			"count": 800,
-			"averages": [
-			{
-				"title": "Zgodność przedmiotu z opisem",
-				"rating": 5
-			},
-			{
-				"title": "Kontakt ze Sprzedającym",
-				"rating": 5
-			},
-			{
-				"title": "Czas realizacji zamówienia",
-				"rating": 4.9
-			},
-			{
-				"title": "Koszt wysyłki",
-				"rating": 4.8
-			}
-			]
-		},
-		"feedbacks": {
-			"all": 1,
-			"positive": {
-				"lastWeek": 1,
-				"lastMonth": 1,
-				"all": 1,
-				"asSeller": 1,
-				"asBuyer": 0,
-				"percent": 100
-			},
-			"neutral": {
-				"lastWeek": 0,
-				"lastMonth": 0,
-				"all": 0,
-				"asSeller": 0,
-				"asBuyer": 0,
-				"percent": 0
-			},
-			"negative": {
-				"lastWeek": 0,
-				"lastMonth": 0,
-				"all": 0,
-				"asSeller": 0,
-				"asBuyer": 0,
-				"percent": 0
-			}
-		},
-		"saleRegulation": ""
-	}
-	];
 
-	var USER_OFFERS = {
+	USER_OFFERS: {
 		"111" : {
 			"count": 4,
 			"offers": [
@@ -235,63 +235,59 @@ angular.module('BTW.allegro.data', [])
 			"count": 0,
 			"offers": []
 		}
-	};
+	},
 
-	var MYWATCHED_ACTIVE = {
+	MY_WATCHED_ACTIVE: {
 		"count": 1,
 		"offers": [
-			{
-				"views": 2,
-				"category": 74130,
-				"note": "",
-				"quantities": {
-					"my": 0,
-					"available": 113,
-					"type": 1
-				},
-				"seller": {
-					"country": 1,
-					"rating": 6376,
-					"id": "4154627",
-					"login": "Awax3"
-				},
-				"location": {
-					"country": 1
-				},
-				"prices": {
-					"bid": null,
-					"buyNow": 14.99
-				},
-				"secondsLeft": 639184,
-				"endingTime": 1359063000,
-				"buyNow": true,
-				"auction": false,
-				"allegroStandard": false,
-				"thumbnail": "http://archiwum.allegro.pl/img/resize?img=http%3A%2F%2F10.193.20.130%2FimagesNEW%2F1826927ad8c6711d30d9e573d84bf0cf79aaa690f95b622317520d1de055215c",
-				"bids": {
-					"count": 0
-				},
-				"id": "5135492077",
-				"name": "Spodnie Tactical M60 L"
-			}
+		{
+			"views": 2,
+			"category": 74130,
+			"note": "",
+			"quantities": {
+				"my": 0,
+				"available": 113,
+				"type": 1
+			},
+			"seller": {
+				"country": 1,
+				"rating": 6376,
+				"id": "4154627",
+				"login": "Awax3"
+			},
+			"location": {
+				"country": 1
+			},
+			"prices": {
+				"bid": null,
+				"buyNow": 14.99
+			},
+			"secondsLeft": 639184,
+			"endingTime": 1359063000,
+			"buyNow": true,
+			"auction": false,
+			"allegroStandard": false,
+			"thumbnail": "http://archiwum.allegro.pl/img/resize?img=http%3A%2F%2F10.193.20.130%2FimagesNEW%2F1826927ad8c6711d30d9e573d84bf0cf79aaa690f95b622317520d1de055215c",
+			"bids": {
+				"count": 0
+			},
+			"id": "5135492077",
+			"name": "Spodnie Tactical M60 L"
+		}
 		]
-	};
+	},
 
-	var OFFERPAGES = {
+	OFFER_PAGES: {
 		"5135492077" : "http://allegro.pl/blackhawk-spodnie-taktyczne-lightweight-tactical-i5135492077.html",
 		"5125400325" : "http://allegro.pl/org-ladowarka-sieciowa-1-2a-lg-g3s-g2-mini-nexus-5-i5125400325.html",
 		"5138931925" : "http://allegro.pl/everlast-spodnie-dresowe-od-s-do-xxl-tu-xl-i5138931925.html",
 		"5094317323" : "http://allegro.pl/the-rolling-stones-big-hits-winyl-i5094317323.html",
 		"5161390481" : "http://allegro.pl/hm-bluza-z-kapturem-khaki-roz-42-xl-nowa-i5161390481.html",
-		"5135869160", "http://allegro.pl/swietna-kurtka-softshell-bluza-wodoodporna-just-xl-i5135869160.html"
-	};
+		"5135869160" : "http://allegro.pl/swietna-kurtka-softshell-bluza-wodoodporna-just-xl-i5135869160.html"
+	},
 
-    var USERPAGES = {
-    	"111" : "http://allegro.pl/listing/user/listing.php?us_id=17601160",
-    	"112" : "http://allegro.pl/listing/user/listing.php?us_id=7768561"
-    }
-     
-	return {
-
-	};
+	USER_PAGES: {
+		"111" : "http://allegro.pl/listing/user/listing.php?us_id=17601160",
+		"112" : "http://allegro.pl/listing/user/listing.php?us_id=7768561"
+	}
 });
