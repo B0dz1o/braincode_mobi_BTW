@@ -85,14 +85,22 @@ angular.module('BTW.wishlist', [])
 
 			cordova.plugins.locationManager.setDelegate(delegate);
 
-			cordova.plugins.locationManager.requestAlwaysAuthorization()
+			cordova.plugins.locationManager.requestAlwaysAuthorization();
 
-			$timeout(cordova.plugins.locationManager.stopRangingBeaconsInRegion(
-					beaconRegion)
-				.fail(console.error)
-				.done(), 1000);
+			var fun = function () {
+				console.log('test1');
+				cordova.plugins.locationManager.stopRangingBeaconsInRegion(
+						beaconRegion)
+					.fail(console.error)
+					.done();
+				console.log('test2');
+			};
+
+
+			$timeout(fun, 10000);
+
 			cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
-			.fail(console.error)
+				.fail(console.error)
 				.done();
 
 		}
