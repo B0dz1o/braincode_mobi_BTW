@@ -7,7 +7,7 @@
           <ion-item  class="item item-thumbnail-left" ng-repeat="item in cart" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
                   <img src="{{item.offer.mainImage}}">
                   <h2> {{item.offer.name}}</h2>
-              <p>{{item.offer.prices.buyNow | currency}}</p>
+              <p style="float:right;">{{item.offer.prices.buyNow | currency}}</p>
               <ion-option-button class="button-assertive ng-click="onRelease($index)">
               Swipe left to delete
               </ion-option-button>
