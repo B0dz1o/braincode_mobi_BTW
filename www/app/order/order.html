@@ -1,5 +1,24 @@
 <ion-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Koszyk {{totalPrice() | currency }}</h1>
+    </ion-header-bar>
   <ion-content>
-    <h1>Order</h1>
+      <ion-list can-swipe="true">
+          <ion-item  class="item item-thumbnail-left" ng-repeat="item in cart" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
+                  <img src="{{item.offer.mainImage}}">
+                  <h2> {{item.offer.name}}</h2>
+              <p>{{item.offer.prices.buyNow | currency}}</p>
+              <ion-option-button class="button-assertive ng-click="onRelease($index)">
+              Swipe left to delete
+              </ion-option-button>
+          </ion-item>
+      </ion-list>
   </ion-content>
+    <ion-footer-bar class="bar-assertive">
+        <div class="button-bar">
+            <button class="button button-assertive button-icon icon ion-card">Zapłać przez Allegro</button>
+        </div>
+    </ion-footer-bar>
 </ion-view>
+
+

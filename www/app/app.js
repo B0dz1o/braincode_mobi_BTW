@@ -50,7 +50,8 @@ angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.rec
 						templateUrl: "app/order/order.html",
 						controller: 'OrderCtrl'
 					}
-				}
+				},
+                cache: false
 			})
 			.state('tabs.recommended', {
 				url: "/recommended/:sellerId",

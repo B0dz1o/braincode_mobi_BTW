@@ -26,7 +26,8 @@ angular.module('BTW.common', [])
             clear: clear,
             const: {
                 WISHLIST: 'wishList',
-                USER: 'user'
+                USER: 'user',
+                ORDER: 'order'
             }
         }
     })

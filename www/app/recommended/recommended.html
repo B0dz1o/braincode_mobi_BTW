@@ -42,7 +42,7 @@
   </ion-content>
   <ion-footer-bar  class="bar-assertive">
     <div class="button-bar">
-      <button class="button button-dark button-icon icon ion-ios-cart">  {{totalPrice() | currency }}</button>
+      <button class="button button-dark button-icon icon ion-ios-cart" ng-click="makeOrder()">  {{totalPrice() | currency }}</button>
       <button class="button button-assertive button-icon icon ion-ios-list">  allegro</button>
     </div>
   </ion-footer-bar>

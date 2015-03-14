@@ -44,7 +44,12 @@ angular.module('BTW.recommended', ['ionic', 'ionic.contrib.ui.tinderCards', 'BTW
         };
     })
 
-	.controller('RecommendedCtrl', function ($scope, $http, $stateParams, RecommenderService) {
+	.controller('RecommendedCtrl', function ($scope, $http, $stateParams, RecommenderService,ApplicationState,$state) {
+        $scope.makeOrder = function() {
+            ApplicationState.set(ApplicationState.const.ORDER,$scope.cart);
+            $state.go('tabs.order');
+        }
+
         $scope.cart = [];
         $scope.cards = [];
         $scope.cardsLoaded = true;
