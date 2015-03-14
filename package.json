@@ -18,6 +18,7 @@
     "org.apache.cordova.inappbrowser",
     "org.apache.cordova.console",
     "com.ionic.keyboard",
-    "org.apache.cordova.dialogs"
+    "org.apache.cordova.dialogs",
+    "com.unarin.cordova.beacon"
   ]
 }
