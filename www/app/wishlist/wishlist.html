@@ -7,9 +7,13 @@
     </ion-header-bar>
     <ion-content>
         <!-- our list and list items -->
-        <ion-list>
-            <ion-item ng-repeat="item in wishItem">
+        <ion-list can-swipe="true">
+            <ion-item ng-repeat="item in wishItem" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
                 {{item.title}}
+                <ion-option-button class="button-assertive
+                                   ng-click="share(item)">
+                    Swipe left to delete
+                </ion-option-button>
             </ion-item>
         </ion-list>
     </ion-content>

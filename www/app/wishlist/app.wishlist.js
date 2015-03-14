@@ -1,6 +1,21 @@
 angular.module('BTW.wishlist', [])
 	.controller('WishlistCtrl', function ($scope, $ionicModal) {
 
+        $scope.onSwipeLeft = function($index) {
+            $scope.wishItem[$index].left = true;
+        }
+        $scope.onSwipeRight = function($index) {
+            $scope.wishItem[$index].left = false;
+        }
+        $scope.onRelease = function($index) {
+            if($scope.wishItem[$index].left) {
+
+                $scope.wishItem.splice($index, 1);
+            }
+        }
+
+
+
         if(JSON.parse(localStorage.getItem('wishList')) == null) {
             $scope.wishItem = [];
         } else {
