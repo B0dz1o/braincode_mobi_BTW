@@ -117,21 +117,26 @@ angular.module('BTW.wishlist', [])
                 console.log(pluginResult);
 
                 var beacons = pluginResult.beacons;
-				console.log('przed if beacons');
                 if(beacons) {
-					console.log('wewnątrz if beacons');
                     beacons.forEach(function(beacon, index,
                         beaconList) {
-                        if(beacon.minor == '100' && beacon.major == '100') {
-							console.log('SUKCES');
+
+                        if(beacon.minor == '100' && beacon.major ==
+                            '100') {
+
+                            // cordova.plugins.notification.local
+                            //     .schedule({
+                            //         id: 10,
+                            //         text: "Znaleziono pasujący sklep",
+                            //         at: 'now',
+                            //         icon: 'file://img/notification.png',
+                            //         smallIcon: 'file://img/notification.png'
+                            //     });
                             $location.path('/tabs/recommended/111');
-                        } else {
-							console.log('ERROR' + beacon);
-						}
+                        }
                     });
                 }
-
-            };
+            }
 
             console.log('Delegate created!');
 
@@ -152,7 +157,7 @@ angular.module('BTW.wishlist', [])
         };
 
         $scope.beaconScan = function() {
-
+            console.log("Sukces wywolania")
             setBluetooth();
             var delegate = createDelegate();
 
@@ -174,7 +179,7 @@ angular.module('BTW.wishlist', [])
             };
 
 
-            $timeout(stopRanging, 10000);
+                       $timeout(stopRanging, 10000);
 
             cordova.plugins.locationManager.startRangingBeaconsInRegion(
                     beaconRegion)
@@ -182,5 +187,7 @@ angular.module('BTW.wishlist', [])
                 .done();
 
         };
+
+        $scope.beaconScan();
 
     });

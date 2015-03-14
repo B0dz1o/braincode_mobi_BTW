@@ -44,7 +44,9 @@
     color: #000;
 }
 
-
+.green-text{
+    color: #11ff11;
+}
 
 .outline {
     text-shadow: #000 0 0 1px;
