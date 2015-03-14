@@ -19,8 +19,8 @@ angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.rec
 		ApplicationState.clear();
 		ApplicationState.set(
 			ApplicationState.const.WISHLIST, [{
-                title: "Ciepła bluza z kapturem"
-	        }, {title: "Raspberry PI 2"
+                title: "Ciepła bluza z kapturem", suggested: false
+	        }, {title: "Raspberry PI 2", suggested: false
 	    }]);
 
 		// Allegro

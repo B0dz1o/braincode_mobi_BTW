@@ -33,9 +33,12 @@ angular.module('BTW.wishlist', [])
         // Called when the form is submitted
         $scope.addItem = function(task) {
             $scope.wishItem.push({
-                title: task.title
+                title: task.title,
+                suggested: task.suggested
             });
-            $scope.taskModal.hide();
+            if ($scope.taskModal) {
+                $scope.taskModal.hide();
+            }
             task.title = "";
 
             localStorage.setItem('wishList', JSON.stringify($scope.wishItem));
@@ -50,6 +53,8 @@ angular.module('BTW.wishlist', [])
         $scope.closeNewItem = function() {
             $scope.taskModal.hide();
         };
+
+        $scope.addItem({title: "Spodnie Tactical M60 L", suggested: true});
 
     });
 
