@@ -1,6 +1,7 @@
 
 angular.module('BTW', ['ionic', 'BTW.login', 'BTW.order', 'BTW.recommended',
         'BTW.wishlist'])
+
 	.run(function ($ionicPlatform) {
 		$ionicPlatform.ready(function () {
 			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -14,6 +15,19 @@ angular.module('BTW', ['ionic', 'BTW.login', 'BTW.order', 'BTW.recommended',
 			}
 		});
 	})
+
+	.config(function (ApplicationState) {
+		// initial data come here
+		
+		// WISHLIST
+		var data = ApplicationState.get(ApplicationState.const.WISHLIST) || [];
+		ApplicationState.set(ApplicationState.const.WISHLIST, data);
+
+		// Allegro
+		// TODO 
+
+	})
+
 	.config(function ($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('tabs', {
 				url: "/tabs",

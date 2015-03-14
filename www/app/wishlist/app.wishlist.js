@@ -1,2 +1,5 @@
-angular.module('BTW.wishlist', [])
-	.controller('WishlistCtrl', function ($scope) {});
+angular.module('BTW.wishlist', ['BTW.wishlist.services'])
+
+	.controller('WishlistCtrl', function ($scope, WishlistService) {
+		$scope.wishlist = WishlistService.list();
+	});
