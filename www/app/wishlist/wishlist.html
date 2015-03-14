@@ -12,6 +12,12 @@
                 {{item.title}}
             </ion-item>
         </ion-list>
+        <h1 ng-click="beaconScan();">Beacony<br>{{beaconList}}<br>koniec listy</h1>
+        <ion-list>
+            <ion-item ng-repeat="beacon in beaconList">
+                {{beacon}}
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>
 <script id="new-task.html" type="text/ng-template">
