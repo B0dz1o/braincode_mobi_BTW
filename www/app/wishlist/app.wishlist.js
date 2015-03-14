@@ -56,8 +56,6 @@ angular.module('BTW.wishlist', [])
 
         $scope.addItem({title: "Spodnie Tactical M60 L", suggested: true});
 
-    });
-
 
 		if (JSON.parse(localStorage.getItem('wishList')) == null) {
 			$scope.wishItem = [];
@@ -128,7 +126,7 @@ angular.module('BTW.wishlist', [])
 				})
 				.fail(console.error)
 				.done();
-		}
+		};
 
 		$scope.beaconScan = function () {
 
@@ -159,6 +157,6 @@ angular.module('BTW.wishlist', [])
 				.fail(console.error)
 				.done();
 
-		}
+		};
 
 	});
