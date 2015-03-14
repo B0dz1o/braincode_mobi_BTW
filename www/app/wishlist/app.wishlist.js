@@ -37,3 +37,4 @@ angular.module('BTW.wishlist', [])
         };
 
     });
+
