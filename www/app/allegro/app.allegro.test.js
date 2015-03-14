@@ -126,7 +126,7 @@ angular.module('BTW.allegro.data', [])
 			"offers": [
 			{
 				"id": "5135869160",
-				"name": "Bluza Softshell Sport L"
+				"name": "Bluza Softshell Sport L",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -147,7 +147,7 @@ angular.module('BTW.allegro.data', [])
 			},
 			{
 				"id": "5161390481",
-				"name": "Bluza z kapturem KHAKI XL"
+				"name": "Bluza z kapturem KHAKI XL",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -168,7 +168,7 @@ angular.module('BTW.allegro.data', [])
 			},
 			{
 				"id": "5138931925",
-				"name": "Spodnie dresowe marki Dresy Teresy (używane) XL"
+				"name": "Spodnie dresowe marki Dresy Teresy (używane) XL",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -189,7 +189,7 @@ angular.module('BTW.allegro.data', [])
 			},
 			{
 				"id": "5094317323",
-				"name": "THE ROLLING STONES: BIG HITS"
+				"name": "THE ROLLING STONES: BIG HITS",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -210,7 +210,7 @@ angular.module('BTW.allegro.data', [])
 			},
 			{
 				"id": "5125400325",
-				"name": "Ładowarka USB Android NEXUS 5"
+				"name": "Ładowarka USB Android NEXUS 5",
 				"freeShipping": false,
 				"features": {
 					"bold": false
@@ -283,11 +283,12 @@ angular.module('BTW.allegro.data', [])
 		"5138931925" : "http://allegro.pl/everlast-spodnie-dresowe-od-s-do-xxl-tu-xl-i5138931925.html",
 		"5094317323" : "http://allegro.pl/the-rolling-stones-big-hits-winyl-i5094317323.html",
 		"5161390481" : "http://allegro.pl/hm-bluza-z-kapturem-khaki-roz-42-xl-nowa-i5161390481.html",
-		"5135869160" : "http://allegro.pl/swietna-kurtka-softshell-bluza-wodoodporna-just-xl-i5135869160.html"
+		"5135869160": "http://allegro.pl/swietna-kurtka-softshell-bluza-wodoodporna-just-xl-i5135869160.html"
 	},
 
 	USER_PAGES: {
 		"111" : "http://allegro.pl/listing/user/listing.php?us_id=17601160",
 		"112" : "http://allegro.pl/listing/user/listing.php?us_id=7768561"
 	}
+}
 });

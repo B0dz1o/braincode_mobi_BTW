@@ -7,7 +7,7 @@ angular.module('BTW.allegro', ['BTW.allegro.data'])
 	// dostaje notyfikacje o pasujących przedmiotach sprzedawcy w okolicy
     // ! * obserwowane klienta             GET /v1/allegro/my/watched/active
     // ! * przedmioty z oferty sprzedawcy  GET /v1/allegro/users/{userId}/offers oferty użytkownika 
-    // ! * dane o sprzedawcy               strona www
+    // ! * dane o sprzedawcy               strona www / GET /v1/allegro/users/{userId}/
     // ! * dokonanie płatności kup teraz   GET /v1/allegro/offers/{offerId}/buy
     //     produktów z listy
     // * 
