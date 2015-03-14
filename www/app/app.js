@@ -16,10 +16,16 @@ angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.rec
 
 		// initial data come here
 		// WISHLIST
-		ApplicationState.set(ApplicationState.const.WISHLIST, []);
+		ApplicationState.clear();
+		ApplicationState.set(
+			ApplicationState.const.WISHLIST, [{
+                title: "Ciepła bluza z kapturem"
+	        }, {title: "Raspberry PI 2"
+	    }]);
 
 		// Allegro
-		// TODO 
+		ApplicationState.set(
+			ApplicationState.const.USER, "112");
 	})
 
 	.config(function ($stateProvider, $urlRouterProvider) {
