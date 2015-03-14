@@ -1,5 +1,5 @@
 angular.module('BTW.wishlist', [])
-	.controller('WishlistCtrl', function ($scope, $ionicModal) {
+	.controller('WishlistCtrl', function ($scope, $ionicModal, $timeout) {
 
 		if (JSON.parse(localStorage.getItem('wishList')) == null) {
 			$scope.wishItem = [];
@@ -36,20 +36,12 @@ angular.module('BTW.wishlist', [])
 			$scope.taskModal.hide();
 		};
 
-		$scope.beaconList = [];
-
-		var id = 1;
-
 		var createDelegate = function () {
 
 			var delegate = new cordova.plugins.locationManager.Delegate();
 
 			delegate.didDetermineStateForRegion = function (pluginResult) {
 				console.log('didDetermineStateForRegion:\n' + pluginResult);
-				$scope.beaconList.push(pluginResult);
-				console.log(id);
-				++id;
-				$scope.$apply();
 			};
 
 			delegate.didStartMonitoringForRegion = function (pluginResult) {
@@ -58,6 +50,8 @@ angular.module('BTW.wishlist', [])
 
 			delegate.didRangeBeaconsInRegion = function (pluginResult) {
 				console.log('didRangeBeaconsInRegion:\n' + pluginResult);
+				$scope.beaconList = pluginResult;
+				console.log(pluginResult);
 			};
 
 			console.log('Delegate created!');
@@ -71,8 +65,6 @@ angular.module('BTW.wishlist', [])
 				.then(function (isEnabled) {
 					console.log("isEnabled: " + isEnabled);
 					if (!isEnabled) {
-						// 	cordova.plugins.locationManager.disableBluetooth();
-						// } else {
 						cordova.plugins.locationManager.enableBluetooth();
 					}
 				})
@@ -87,19 +79,20 @@ angular.module('BTW.wishlist', [])
 
 			var uuid = '12345678-1234-1234-1234-123456789012';
 			var identifier = 'beaconyAllegro';
-			// var minor = 1000;
-			// var major = 5;
+
 			var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(
 				identifier, uuid);
 
 			cordova.plugins.locationManager.setDelegate(delegate);
 
-			// required in iOS 8+
-			// cordova.plugins.locationManager.requestWhenInUseAuthorization();
 			cordova.plugins.locationManager.requestAlwaysAuthorization()
 
-			cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
+			$timeout(cordova.plugins.locationManager.stopRangingBeaconsInRegion(
+					beaconRegion)
 				.fail(console.error)
+				.done(), 1000);
+			cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
+			.fail(console.error)
 				.done();
 
 		}
