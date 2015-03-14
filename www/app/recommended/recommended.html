@@ -8,7 +8,7 @@
        
     </ion-header-bar>
     
-  <ion-content scroll="false"  has-bouncing="false">
+  <ion-content scroll="true"  has-bouncing="false" >
       <div ng-if="cardsLoaded">
           <td-cards>
               <td-card
@@ -28,14 +28,12 @@
                       </figure>
                   </div>
 
-                  <button class="name">
+                  <button class="name" style="margin-bottom: 10px; padding: 10px;">
                     <a href="#" ng-click="openInSystemBrowser(offerWWWPage)">
                       {{card.offer.name}}
                     </a>
                     <span class="prize outline">&nbsp;{{card.offer.prices.buyNow | currency}}</span>
                   </button>
-
-
               </td-card>
           </td-cards>
       </div>

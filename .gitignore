@@ -8,3 +8,5 @@ www/lib/
 hooks/
 .idea/
 atlassian-ide-plugin.xml
+resources/ios/
+resources/android/

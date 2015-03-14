@@ -2,7 +2,7 @@
     <ion-header-bar class="bar-dark">
         <h1 class="title">Koszyk {{totalPrice() | currency }}</h1>
     </ion-header-bar>
-  <ion-content>
+  <ion-content s>
       <ion-list can-swipe="true">
           <ion-item  class="item item-thumbnail-left" ng-repeat="item in cart" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
                   <img src="{{item.offer.mainImage}}">

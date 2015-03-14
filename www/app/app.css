@@ -44,6 +44,14 @@
     color: #000;
 }
 
+.loginpane {
+    background: url('../img/splash.png') no-repeat center center fixed;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
 
 
 .outline {
