@@ -22,7 +22,7 @@
                       >
                   <div class="card">
                       <figure class="item item-image">
-                          <img ng-src="{{card.offer.mainImage}}">
+                          <img ng-src="{{card.offer.mainImage}}" style="width: 75%;">
                           <div class="td-card__overlay td-card__overlay--dislike no-text">Dislike</div>
                           <div class="td-card__overlay td-card__overlay--like yes-text">Add to cart</div>
                       </figure>
@@ -40,8 +40,8 @@
   </ion-content>
   <ion-footer-bar  class="bar-assertive">
     <div class="button-bar">
-      <button class="button button-dark button-icon icon ion-ios-cart" ng-click="makeOrder()">  {{totalPrice() | currency }}</button>
-      <button class="button button-assertive button-icon icon ion-ios-list">  allegro</button>
+      <button class="button button-dark button-icon icon ion-ios-cart" ng-click="makeOrder()">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{totalPrice() | currency }}</button>
+      <button class="button button-assertive button-icon icon ion-ios-list"> &nbsp;&nbsp;&nbsp; allegro</button>
     </div>
   </ion-footer-bar>
 </ion-view>
