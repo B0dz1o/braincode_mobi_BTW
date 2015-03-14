@@ -1,88 +1,57 @@
+angular.module('BTW.allegro', ['BTW.allegro.data'])
 
-angular.module('app.allegro', [])
+.factory('AllegroService', function($timeout, $q, AllegroMockData) {
 
-.factory('AllegroService', function(){
-
-	// allegro/offers/{offerId}/buy KUP TERAZ
-
-
-
-
-	// allegro/users/{userId}/offers oferty użytkownika 
-
-
-	var userOffers = {
-		"count": 25,
-	    "offers": [
-	        {
-	            "freeShipping": false,
-	            "features": {
-	                "bold": false
-	            },
-	            "prices": {
-	                "bid": 1,
-	                "buyNow": 12.46
-	            },
-	            "secondsLeft": 110,
-	            "endingTime": 1361787951,
-	            "buyNow": true,
-	            "auction": true,
-	            "allegroStandard": false,
-	            "mainImage": null,
-	            "bids": {
-	                "count": 0
-	            },
-	            "id": "2889172243",
-	            "name": "mobile mobius offer"
-	        }
-	    ]
-	};
-
-	// GET /v1/allegro/my/bought Pobranie listy kupionych ofert
-
-	// GET /allegro/my/watched/active Metoda pozwala na pobranie listy ofert obserwowanych
-	var myWatchedActive = {
-		"count": 1,
-		"offers": [
-			{
-				"views": 2,
-				"category": 74130,
-				"note": "",
-				"quantities": {
-					"my": 0,
-					"available": 113,
-					"type": 1
-				},
-				"seller": {
-					"country": 1,
-					"rating": 6376,
-					"id": "4154627",
-					"login": "Awax3"
-				},
-				"location": {
-					"country": 1
-				},
-				"prices": {
-					"bid": null,
-					"buyNow": 14.99
-				},
-				"secondsLeft": 639184,
-				"endingTime": 1359063000,
-				"buyNow": true,
-				"auction": false,
-				"allegroStandard": false,
-				"thumbnail": "http://img01.te2/photos/64x48/27/09/43/54/2709435482",
-				"bids": {
-					"count": 0
-				},
-				"id": "2709435482",
-				"name": "OBUDOWA NOKIA N97 CZARNA DOTYK DIGITIZER KORPUS"
-			}
-		]
-	} 
+	// Co mockujemy ?
+	// klient z listą życzeń oraz swoją listą przedmiotów obserwowanych 
+	// dostaje notyfikacje o pasujących przedmiotach sprzedawcy w okolicy
+    // ! * obserwowane klienta             GET /v1/allegro/my/watched/active
+    // ! * przedmioty z oferty sprzedawcy  GET /v1/allegro/users/{userId}/offers oferty użytkownika 
+    // ! * dane o sprzedawcy               strona www / GET /v1/allegro/users/{userId}/
+    // ! * dokonanie płatności kup teraz   GET /v1/allegro/offers/{offerId}/buy
+    //     produktów z listy
+    // * 
 
 	return {
-		
+		buyNow: function (item) {
+			var deferred = $q.defer();
+
+			$timeout(function() {
+				if (success) {
+					deferred.resolve({
+						"deal":"12345",
+						"message":"7,99 zł - Gratulacje! Kupiłeś przedmiot poprzez Kup Teraz"
+					});
+				} else {
+					deferred.reject( {
+						"message":"Cannot bid item",
+						"code":7603,
+						"userMessage":"Niestety nie możesz złożyć oferty we wskazanej aukcji. Trwa hackathon."
+					});
+				}
+			}, 1000);
+
+			return deferred.promise;
+		},
+
+		getMyWatchedActiveOffers : function (uid) {
+			return AllegroMockData.MY_WATCHED_ACTIVE;
+		},
+
+		getUser : function (uid) {
+			return AllegroMockData.USERS[uid];
+		},
+
+		getUserOffers : function (uid) {
+			return AllegroMockData.USER_OFFERS[uid];
+		},
+
+		getOfferPage : function (offerId) {
+			return AllegroMockData.OFFER_PAGES[offerId]
+		},
+		getUserPage : function (uid) {
+			return AllegroMockData.USER_PAGES[uid];
+		}
 	};
 })
 

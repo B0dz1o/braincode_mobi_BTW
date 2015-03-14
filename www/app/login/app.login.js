@@ -1,5 +1,5 @@
 angular.module('BTW.login', [])
-	.controller('LoginCtrl', function ($scope) {
+	.controller('LoginCtrl', function ($scope, $location) {
 		$scope.notify = function () {
 			cordova.plugins.notification.local.schedule({
 				id: 1,
@@ -8,5 +8,11 @@ angular.module('BTW.login', [])
 				icon: 'file://img/clockwht.png',
 				smallIcon: 'file://img/clockblk.png'
 			});
-		}
-	});
+		};
+
+		$scope.login = function () {
+			$location.path('/tabs/wishlist');
+		};
+	})
+;
+
