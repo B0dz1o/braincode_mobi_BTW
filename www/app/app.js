@@ -1,5 +1,5 @@
 
-angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.recommended', 'BTW.wishlist'])
+angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.recommended', 'BTW.wishlist', 'BTW.wishlist.services'])
 
 	.run(function ($ionicPlatform, ApplicationState) {
 		$ionicPlatform.ready(function () {
@@ -14,15 +14,12 @@ angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.rec
 			}
 		});
 
-		// // initial data come here
-		// // WISHLIST
-		// var data = ApplicationState.get(ApplicationState.const.WISHLIST);
-		// if (!data) {
-		// 	ApplicationState.set(ApplicationState.const.WISHLIST, data);
-		// }
+		// initial data come here
+		// WISHLIST
+		ApplicationState.set(ApplicationState.const.WISHLIST, []);
 
-		// // Allegro
-		// // TODO 
+		// Allegro
+		// TODO 
 	})
 
 	.config(function ($stateProvider, $urlRouterProvider) {

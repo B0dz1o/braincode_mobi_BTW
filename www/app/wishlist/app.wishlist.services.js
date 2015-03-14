@@ -4,7 +4,7 @@ angular.module('BTW.wishlist.services', ['BTW.common'])
 		return {
 
 			list: function () {
-				return ApplicationState.get(ApplicationState.const.WISHLIST) || [];
+				return ApplicationState.get(ApplicationState.const.WISHLIST);
 			},
 
 			// element with given id or null
@@ -32,7 +32,7 @@ angular.module('BTW.wishlist.services', ['BTW.common'])
 				}
  				data.splice(removeIndex, 1);
 				ApplicationState.set(ApplicationState.const.WISHLIST, data);
-				return removeindex;
+				return removeIndex;
 			},
 
 			// return updatedIndex or null
