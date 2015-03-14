@@ -1,8 +1,7 @@
 
-angular.module('BTW', ['ionic', 'BTW.login', 'BTW.order', 'BTW.recommended',
-        'BTW.wishlist'])
+angular.module('BTW', ['ionic', 'BTW.common', 'BTW.login', 'BTW.order', 'BTW.recommended', 'BTW.wishlist'])
 
-	.run(function ($ionicPlatform) {
+	.run(function ($ionicPlatform, ApplicationState) {
 		$ionicPlatform.ready(function () {
 			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 			// for form inputs)
@@ -14,18 +13,16 @@ angular.module('BTW', ['ionic', 'BTW.login', 'BTW.order', 'BTW.recommended',
 				StatusBar.styleDefault();
 			}
 		});
-	})
 
-	.config(function (ApplicationState) {
-		// initial data come here
-		
-		// WISHLIST
-		var data = ApplicationState.get(ApplicationState.const.WISHLIST) || [];
-		ApplicationState.set(ApplicationState.const.WISHLIST, data);
+		// // initial data come here
+		// // WISHLIST
+		// var data = ApplicationState.get(ApplicationState.const.WISHLIST);
+		// if (!data) {
+		// 	ApplicationState.set(ApplicationState.const.WISHLIST, data);
+		// }
 
-		// Allegro
-		// TODO 
-
+		// // Allegro
+		// // TODO 
 	})
 
 	.config(function ($stateProvider, $urlRouterProvider) {
@@ -72,4 +69,5 @@ angular.module('BTW', ['ionic', 'BTW.login', 'BTW.order', 'BTW.recommended',
 			});
 		// if none of the above states are matched, use this as the fallback
 		$urlRouterProvider.otherwise('/tabs/login');
-	});
+	})
+;

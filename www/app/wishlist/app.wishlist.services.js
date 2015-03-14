@@ -1,7 +1,6 @@
 angular.module('BTW.wishlist.services', ['BTW.common'])
 
-	.factory('WishlistService', function($localStorage, ApplicationState) {
-
+	.factory('WishlistService', function(ApplicationState) {
 		return {
 
 			list: function () {
@@ -17,8 +16,15 @@ angular.module('BTW.wishlist.services', ['BTW.common'])
 				return filtered.length != 0 ? null : filtered[0];
 			},
 
+			add: function(item) {
+				var data = ApplicationState.get(ApplicationState.const.WISHLIST);
+				data.unshift(item);
+				ApplicationState.set(ApplicationState.const.WISHLIST, data);
+				return;
+			},
+
 			// @return removed index or null
-			delete: function (id) {
+			remove: function (id) {
 				var data = ApplicationState.get(ApplicationState.const.WISHLIST);
 				var removeIndex = data.map(function(item) { return item.id; }).indexOf(id);
 				if (removeIndex == -1 ) {
@@ -29,16 +35,18 @@ angular.module('BTW.wishlist.services', ['BTW.common'])
 				return removeindex;
 			},
 
+			// return updatedIndex or null
 			update: function (updatedItem) {
 				var data = ApplicationState.get(ApplicationState.const.WISHLIST);
-				data.forEach(function (item) {
-					if (item.id === updatedItem.id) {
+				var updatedIndex = null;
+				data.forEach(function (item, index) {
+					if (item.id == updatedItem.id) {
 						item.label = updatedItem.label;
+						updatedIndex = index;
 					}
 				});
 				ApplicationState.set(ApplicationState.const.WISHLIST, data);
+				return updatedIndex;
 			}
-		};
-
-	})
-;
+		}
+	});
