@@ -8,10 +8,12 @@
     <ion-content>
         <!-- our list and list items -->
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="item in wishItem" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
+            <ion-item ng-repeat="item in wishItem" class="item-icon-right" on-swipe-left="onSwipeLeft($index)" on-swipe-right="onSwipeRight($index)" on-release="onRelease($index)">
                 {{item.title}}
-                <ion-option-button class="button-assertive
-                                   ng-click="onRelease($index)">
+                <div ng-if="item.suggested" class="icon" style="font-size: 9px;">
+                    sponsored by <img style="margin-left: 5px; height: 14px; width: auto;" src="img/allegro.png"/>
+                </div>
+                <ion-option-button class="button-assertive ng-click="share(item)">
                     Swipe left to delete
                 </ion-option-button>
             </ion-item>
@@ -21,9 +23,9 @@
 <script id="new-task.html" type="text/ng-template">
     <div class="modal">
         <!-- Modal header bar -->
-        <ion-header-bar class="bar-secondary">
+        <ion-header-bar class="bar-dark">
             <h1 class="title">Dodaj nowy wpis</h1>
-            <button class="button button-clear button-positive" ng-click="closeNewItem()">Anuluj</button>
+            <button class="button button-clear button-clear" ng-click="closeNewItem()">Anuluj</button>
         </ion-header-bar>
 
         <!-- Modal content area -->
@@ -36,7 +38,7 @@
                     </label>
                 </div>
                 <div class="padding">
-                    <button type="submit" class="button button-block button-positive">Dodaj nowy wpis</button>
+                    <button type="submit" class="button button-block button-assertive">Dodaj nowy wpis</button>
                 </div>
             </form>
 
