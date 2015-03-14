@@ -1,7 +1,17 @@
+angular.module('BTW.allegro', [])
 
-angular.module('app.allegro', [])
+.factory('AllegroService', function() {
 
-.factory('AllegroService', function(){
+	// Co mockujemy ?
+	// klient z listą życzeń oraz swoją listą przedmiotów obserwowanych 
+	// dostaje notyfikacje o pasujących przedmiotach sprzedawcy w okolicy
+    // * obserwowane klienta             GET /v1/allegro/my/watched/active
+    // * przedmioty z oferty sprzedawcy  GET /v1/allegro/users/{userId}/offers oferty użytkownika 
+    // * dane o sprzedawcy               GET /v1/allegro/users/{userId}
+    // * dokonanie płatności kup teraz   GET /v1/allegro/offers/{offerId}/buy
+    //   produktów z listy
+    // * 
+
 
 	// allegro/offers/{offerId}/buy KUP TERAZ
 
@@ -11,32 +21,7 @@ angular.module('app.allegro', [])
 	// allegro/users/{userId}/offers oferty użytkownika 
 
 
-	var userOffers = {
-		"count": 25,
-	    "offers": [
-	        {
-	            "freeShipping": false,
-	            "features": {
-	                "bold": false
-	            },
-	            "prices": {
-	                "bid": 1,
-	                "buyNow": 12.46
-	            },
-	            "secondsLeft": 110,
-	            "endingTime": 1361787951,
-	            "buyNow": true,
-	            "auction": true,
-	            "allegroStandard": false,
-	            "mainImage": null,
-	            "bids": {
-	                "count": 0
-	            },
-	            "id": "2889172243",
-	            "name": "mobile mobius offer"
-	        }
-	    ]
-	};
+	
 
 	// GET /v1/allegro/my/bought Pobranie listy kupionych ofert
 
@@ -71,12 +56,12 @@ angular.module('app.allegro', [])
 				"buyNow": true,
 				"auction": false,
 				"allegroStandard": false,
-				"thumbnail": "http://img01.te2/photos/64x48/27/09/43/54/2709435482",
+				"thumbnail": "http://archiwum.allegro.pl/img/resize?img=http%3A%2F%2F10.193.20.130%2FimagesNEW%2F1826927ad8c6711d30d9e573d84bf0cf79aaa690f95b622317520d1de055215c",
 				"bids": {
 					"count": 0
 				},
-				"id": "2709435482",
-				"name": "OBUDOWA NOKIA N97 CZARNA DOTYK DIGITIZER KORPUS"
+				"id": "3522461796",
+				"name": "Spodnie Tactical M60 L"
 			}
 		]
 	} 
